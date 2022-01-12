@@ -26,11 +26,6 @@ else:
    
 
 # Play around with the parameters
-distribution_function, parameters = eval(selection.replace(' ', '')).run()
-ks = np.arange(0,parameters[0], 1)
+parameters = eval(selection.replace(' ', '')).run()
 
-fig, ax = plt.subplots()
-ax.bar(ks, 
-        [distribution_function(*parameters, k) for k in ks])
-
-st.pyplot(fig)
+eval(selection.replace(' ', '')).plot(*parameters)
