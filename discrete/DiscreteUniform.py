@@ -21,9 +21,9 @@ def run():
     st.write("Hello it's Discrete Uniform")
     
     # Short Description 
-    st.write("""
-             DESCRIPTION NEEDED
-             """)
+    # st.write("""
+    #          DESCRIPTION NEEDED
+    #          """)
     
     # Parameter Sliders 
     start = st.slider(label='Starting point',

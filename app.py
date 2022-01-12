@@ -7,13 +7,17 @@ from continuous import ContinuousUniform
 from utils import CONTINUOUS_OPTIONS, DISCRETE_OPTIONS
 
 st.title('Welcome to Distributed')
-
+st.write("""
+         Curious about probability distributions?\n
+         Build a strong intuition by playing around and visualizing your experiemnts.\n
+         Follow the steps below and don't forget to have fun.
+         """)
 # Continuous vs. distributions 
-'## Select the type of distribution'
+'## 1. Select the type of distribution'
 distribution_type = st.radio(label='What type of distribution do you want to learn about?',
                     options=['Continuous', 'Discrete'])
 
-f'## Pick your favorite {distribution_type.lower()} distribution:'
+f'## 2. Pick your favorite {distribution_type.lower()} distribution:'
 
 # Continuous options:
 if distribution_type == 'Continuous':
@@ -28,4 +32,5 @@ else:
 # Play around with the parameters
 parameters = eval(selection.replace(' ', '')).run()
 
+f'## 3. See the Results'
 eval(selection.replace(' ', '')).plot(*parameters)
