@@ -10,9 +10,10 @@ CONTINUOUS_OPTIONS = ['Continuous Uniform']#,
 DISCRETE_OPTIONS = ['Discrete Uniform',
                     'Binomial',
                     'Bernoulli',
+                    'Poisson',
                     'Geometric',
                     'Negative Binomial',
-                    'Hypergeometric']
-                  #   'Poisson',
+                    'Hypergeometric'
+                    ]
                   #   'Multinomial',
                   #   ]
