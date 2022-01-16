@@ -8,9 +8,9 @@ CONTINUOUS_OPTIONS = ['Continuous Uniform']#,
                                     #   'Student-t']
 
 DISCRETE_OPTIONS = ['Discrete Uniform',
-                                      'Binomial']
-                                    #   'Bernoulli',
-                                    #   'Geometric',
+                    'Binomial',
+                    'Bernoulli',
+                    'Geometric']
                                     #   'Negative Binomial',
                                     #   'Hypergeometric',
                                     #   'Poisson',
