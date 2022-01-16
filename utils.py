@@ -11,8 +11,8 @@ DISCRETE_OPTIONS = ['Discrete Uniform',
                     'Binomial',
                     'Bernoulli',
                     'Geometric',
-                    'Negative Binomial']
-                  #   'Hypergeometric',
+                    'Negative Binomial',
+                    'Hypergeometric']
                   #   'Poisson',
                   #   'Multinomial',
                   #   ]
