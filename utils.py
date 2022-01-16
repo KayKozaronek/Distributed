@@ -14,6 +14,5 @@ DISCRETE_OPTIONS = ['Discrete Uniform',
                     'Geometric',
                     'Negative Binomial',
                     'Hypergeometric'
+                    'Multinomial',
                     ]
-                  #   'Multinomial',
-                  #   ]
