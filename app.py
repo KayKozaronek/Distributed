@@ -2,7 +2,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd 
 import matplotlib.pyplot as plt
-from discrete import Binomial, DiscreteUniform, Bernoulli
+from discrete import Binomial, DiscreteUniform, Bernoulli, Geometric
 from continuous import ContinuousUniform
 from utils import CONTINUOUS_OPTIONS, DISCRETE_OPTIONS
 
