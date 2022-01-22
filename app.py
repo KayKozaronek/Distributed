@@ -2,7 +2,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd 
 import matplotlib.pyplot as plt
-from discrete import Binomial, DiscreteUniform, Bernoulli, Geometric, NegativeBinomial, Hypergeometric, Poisson, Multinomial
+from discrete import Binomial, DiscreteUniform, Bernoulli, Geometric, NegativeBinomial, Hypergeometric, Poisson
 from continuous import ContinuousUniform, Normal, Gamma, Beta, LogNormal, ChiSquared, StudentT
 from utils import CONTINUOUS_OPTIONS, DISCRETE_OPTIONS
 

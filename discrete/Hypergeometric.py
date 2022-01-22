@@ -1,5 +1,5 @@
 import streamlit as st
-import matplotlib.pyplot as plt
+import plotly.express as px 
 from scipy.special import factorial
 import numpy as np 
 
@@ -7,42 +7,48 @@ def nCk(n,k):
     f = factorial
     return f(n) / f(k) / f(n-k)
 
-def distribution_function(w, b, n, k):
-    return nCk(w, k) * nCk(b, n-k) / nCk(w+b, n)
+def distribution_function(N, K, n, k):
+    return nCk(K, k) * nCk(N-K, n-k) / nCk(N, n)
 
-def plot(w, b, n):
-    k = np.arange(n)
-    fig, ax = plt.subplots()
-    ax.bar(k, distribution_function(w, b, n, k))
+def plot(N, K, n):
+    k = np.arange(start=max(0, n+K-N), 
+                  stop=min(n,K), 
+                  step=1)
     
-    ax.set_title('Hypergeometric Distribution')
-    ax.set_xlabel('Value of Random Variable')
-    ax.set_ylabel('Probability ')
+    # st.write(k)
+    # st.write(distribution_function(N, K, n, k))
+    fig = px.bar(x=k,
+                 y=distribution_function(N, K, n, k),
+                 title= f'Hypergeometric Distribution', 
+                 labels={
+                    "x": "Value of Random Variable",
+                    "y": "Probability",
+                    })
 
-    st.pyplot(fig)
-
+    st.plotly_chart(fig)
+    
 # @st.cache
 def run():    
     # Parameter Sliders 
-    w = st.slider(label='MISSING DESCRIPTION (w)',
+    N = st.slider(label='Number of items in the population (N)',
                   min_value=0,
                   max_value=100,
                   value=50,
                   step=1)
 
-    b = st.slider(label='MISSING DESCRIPTION (b)',
+    K = st.slider(label= 'Number of desired objects (K)',
                   min_value=0,
-                  max_value=100,
-                  value=50,
+                  max_value=N-1,
+                  value=int(N/2),
                   step=1)
         
-    n = st.slider(label='MISSING DESCRIPTION (n)',
+    n = st.slider(label='Number of items in the sample (n)',
                   min_value=0,
-                  max_value=100,
-                  value=50,
+                  max_value=N-1,
+                  value=int(N/4),
                   step=1)
 
-    parameters = [w, b, n]
+    parameters = [N, K, n]
     
     return parameters
     

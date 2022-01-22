@@ -1,5 +1,5 @@
 import streamlit as st
-import matplotlib.pyplot as plt
+import plotly.express as px 
 from scipy.special import factorial
 import numpy as np 
 
@@ -10,17 +10,18 @@ def nCk(n,k):
 def distribution_function(n, p, k):
     return nCk(n,k) * p**k * (1-p)**(n-k)
 
-def plot(n, k, p):
+def plot(n, p):
+    k = np.arange(n)
+    fig = px.bar(x=k,
+                 y=distribution_function(n, p, k),
+                 title= f'Multinomial Distribution', 
+                 labels={
+                    "x": "Value of Random Variable",
+                    "y": "Probability",
+                    })
 
-    fig, ax = plt.subplots()
-    ax.bar(k, distribution_function(n, p, k))
+    st.plotly_chart(fig)
     
-    ax.set_title('Multinomial Distribution')
-    ax.set_xlabel('MISSING')
-    ax.set_ylabel('MISSING')
-
-    st.pyplot(fig)
-
 # @st.cache
 def run():    
     # Parameter Sliders 

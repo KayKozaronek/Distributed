@@ -13,6 +13,6 @@ DISCRETE_OPTIONS = ['Discrete Uniform',
                     'Poisson',
                     'Geometric',
                     'Negative Binomial',
-                    'Hypergeometric'
-                    'Multinomial',
+                    'Hypergeometric',
+                    # 'Multinomial',
                     ]

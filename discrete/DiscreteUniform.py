@@ -1,6 +1,6 @@
 import streamlit as st
 import numpy as np
-import matplotlib.pyplot as plt
+import plotly.express as px 
 
 def distribution_function(start, end):
     n = end - start + 1
@@ -8,17 +8,18 @@ def distribution_function(start, end):
 
 def plot(start, end):
     xs = np.arange(start, end, 1)
-    fig, ax = plt.subplots()
-    ax.bar(xs, distribution_function(start, end))
-    
-    ax.set_title('Discrete Uniform Distribution')
-    ax.set_xlabel('Number of X successes')
-    ax.set_ylabel('Probability of seing X successes')
+    ys = np.repeat(distribution_function(start, end),len(xs))
+    fig = px.bar(x=xs,
+                 y=ys,
+                 title= f'Discrete Uniform Distribution', 
+                 labels={
+                    "x": "Number of X successes",
+                    "y": "Probability of seing X successes",
+                    })
 
-    st.pyplot(fig)
+    st.plotly_chart(fig) 
 
 def run():
-    st.write("Hello it's Discrete Uniform")
     
     # Short Description 
     # st.write("""
@@ -28,13 +29,13 @@ def run():
     # Parameter Sliders 
     start = st.slider(label='Starting point',
                   min_value=0,
-                  max_value=100,
+                  max_value=99,
                   value=0,
                   step=1)
     end = st.slider(label='End point',
                     min_value = start,
                     max_value=100,
-                    value=10,
+                    value=start + 1,
                     step=1)
     
     parameters = [start, end]

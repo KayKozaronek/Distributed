@@ -1,6 +1,6 @@
 import streamlit as st
 import numpy as np
-import matplotlib.pyplot as plt
+import plotly.express as px 
 
 def distribution_function(start, end):
     return np.repeat(1/(end-start), 1000)
