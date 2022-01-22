@@ -7,25 +7,27 @@ def distribution_function(mean, variance, x):
     return 1 / np.sqrt(variance * 2 * np.pi) * np.exp(-(x - mean)**2 / (2*variance)) 
 
 def plot(mean, variance):
-    term = 4*np.sqrt(variance)
+    term = mean - 4*np.sqrt(variance)
     # plot_range_1 = [mean - term, mean + term] 
     plot_range_2 = [-50, 50]
-    x = np.arange(plot_range_2[0], plot_range_2[1], 0.01)
-    fig, ax = plt.subplots()
-    ax.plot(x, distribution_function(mean, variance, x))
-    
-    ax.set_title('Normal Distribution')
-    ax.set_xlabel('Value of Random Variable')
-    ax.set_ylabel('Probability ')
+    xs = np.linspace(plot_range_2[0], plot_range_2[1], 1000)
 
-    st.pyplot(fig)
+    fig = px.area(x=xs,
+                y=distribution_function(mean, variance, xs),
+                title= f'Normal Distribution (Gaussian)', 
+                labels={
+                    "x": "Value of Random Variable X",
+                    "y": "Probability",
+                })
+    
+    st.plotly_chart(fig)
 
 # @st.cache
 def run():    
     # Parameter Sliders 
     mean = st.slider(label='Set the center of your distribution (mean)',
-                  min_value=-50,
-                  max_value=50,
+                  min_value=-20,
+                  max_value=20,
                   value=0,
                   step=1)
     
