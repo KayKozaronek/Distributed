@@ -10,7 +10,7 @@ def plot(start, end, block_plot):
         pass
     else:
         xs = np.linspace(start, end, 1000)
-        fig = px.bar(x=xs,
+        fig = px.area(x=xs,
                  y=distribution_function(start, end),
                  title= f'Continuous Uniform Distribution', 
                  labels={
