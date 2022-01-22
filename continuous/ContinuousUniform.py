@@ -10,19 +10,18 @@ def plot(start, end, block_plot):
         pass
     else:
         xs = np.linspace(start, end, 1000)
-        fig, ax = plt.subplots()
-        ax.plot(xs, distribution_function(start, end))
+        fig = px.bar(x=xs,
+                 y=distribution_function(start, end),
+                 title= f'Continuous Uniform Distribution', 
+                 labels={
+                    "x": "Value of Random Variable X",
+                    "y": "Probability",
+                    })
+
+    st.plotly_chart(fig) 
         
-        ax.set_title('Continuous Uniform Distribution')
-        ax.set_xlabel('Number of X successes')
-        ax.set_ylabel('Probability of seing X successes')
 
-        st.pyplot(fig)
-
-
-def run():
-    st.write("Hello it's Discrete Uniform")
-    
+def run():    
     # Short Description 
     # st.write("""
     #          DESCRIPTION NEEDED
