@@ -1,39 +1,39 @@
 import streamlit as st
 import plotly.express as px 
 import numpy as np 
+from scipy.stats import gamma
 
-
-def distribution_function():
-    pass
-
-def plot():
+def plot(a, scale):
+    # rv = gamma(a)
+    xs = np.linspace(gamma.ppf(0.01, a),
+                gamma.ppf(0.99, a), 100)
     
-    x = np.arange()
-    fig, ax = plt.subplots()
-    ax.plot(x, distribution_function(x))
-    
-    ax.set_title('Gamma Distribution')
-    ax.set_xlabel('Value of Random Variable')
-    ax.set_ylabel('Probability ')
-
-    st.pyplot(fig)
-
+    fig = px.area(x=xs, 
+                y= gamma.pdf(xs, a =a, scale=scale),
+                title= f'Gamma Distribution', 
+                labels={
+                "x": "Value of Random Variable X",
+                "y": "Probability",
+                })
+        
+    st.plotly_chart(fig)
+        
 # @st.cache
 def run():    
     # Parameter Sliders 
-    param_a = st.slider(label='',
-                  min_value=-50,
-                  max_value=50,
-                  value=0,
-                  step=1)
+    a = st.slider(label='Adjust the shape parameter (α)',
+                  min_value=0.0,
+                  max_value=10.0,
+                  value=1.0,
+                  step=0.01)
     
-    param_b = st.slider(label='',
-                  min_value=0,
-                  max_value=100,
-                  value=25,
-                  step=1)
+    scale = st.slider(label='Adjust the inverse scale parameters (β)',
+                  min_value=0.0,
+                  max_value=10.0,
+                  value=1.0,
+                  step=0.01)
 
-    parameters = []
+    parameters = [a, scale]
     
     return parameters
     
