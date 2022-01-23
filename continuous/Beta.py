@@ -1,39 +1,40 @@
 import streamlit as st
 import plotly.express as px 
 import numpy as np 
+from scipy.stats import beta 
 
 
-def distribution_function():
-    pass
-
-def plot():
+def plot(a, b): 
+    xs = np.linspace(beta.ppf(0.01, a, b),
+                beta.ppf(0.99, a, b), 1000)
+    fig = px.area(x = xs, 
+            y = beta.pdf(xs, a, b),
+            title = 'Beta Distribution',
+            labels = {
+                'x': 'Value of Random Variable',
+                'y': 'Probability'
+            }
+            )  
+    fig.update_yaxes(range=[0,8])
     
-    x = np.arange()
-    fig, ax = plt.subplots()
-    ax.plot(x, distribution_function(x))
-    
-    ax.set_title('Beta Distribution')
-    ax.set_xlabel('Value of Random Variable')
-    ax.set_ylabel('Probability ')
-
-    st.pyplot(fig)
+    st.plotly_chart(fig)
 
 # @st.cache
 def run():    
     # Parameter Sliders 
-    param_a = st.slider(label='',
-                  min_value=-50,
-                  max_value=50,
-                  value=0,
-                  step=1)
+    a = st.slider(label='Adjust the shape parameter (α)',
+                  min_value=0.0,
+                  max_value=5.0,
+                  value=1.0,
+                  step=0.1)
     
-    param_b = st.slider(label='',
-                  min_value=0,
-                  max_value=100,
-                  value=25,
-                  step=1)
+    b = st.slider(label='Adjust the shape parameter (β)',
+                  min_value=0.0,
+                  max_value=5.0,
+                  value=1.0,
+                  step=0.1)
 
-    parameters = []
+    parameters = [a, b]
     
     return parameters
     

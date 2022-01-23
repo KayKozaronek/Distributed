@@ -27,7 +27,7 @@ def run():
                   value=1.0,
                   step=0.01)
     
-    scale = st.slider(label='Adjust the inverse scale parameters (β)',
+    scale = st.slider(label='Adjust the inverse scale parameter (β)',
                   min_value=0.0,
                   max_value=10.0,
                   value=1.0,
