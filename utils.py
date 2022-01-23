@@ -3,7 +3,7 @@ CONTINUOUS_OPTIONS = ['Continuous Uniform',
                       'Normal',
                       'Gamma',
                       'Beta',
-                      'Log-Normal',
+                      'Log Normal',
                       'Chi Squared',
                       'Student T']
 

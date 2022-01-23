@@ -1,39 +1,41 @@
 import streamlit as st
 import plotly.express as px 
 import numpy as np 
+from scipy.stats import lognorm 
 
 
-def distribution_function():
-    pass
+def plot(mean, std): 
+    xs = np.linspace(lognorm.ppf(0.01, std),
+                lognorm.ppf(0.99, std), 1000)
 
-def plot():
+    fig = px.area(x = xs, 
+            y = lognorm.pdf(xs, s=std, loc=mean),
+            title = 'Log-Normal Distribution',
+            labels = {
+                'x': 'Value of Random Variable',
+                'y': 'Probability'
+            }
+            )  
+    # fig.update_yaxes(range=[0,0.5])
     
-    x = np.arange()
-    fig, ax = plt.subplots()
-    ax.plot(x, distribution_function(x))
-    
-    ax.set_title('Log-Normal Distribution')
-    ax.set_xlabel('Value of Random Variable')
-    ax.set_ylabel('Probability ')
-
-    st.pyplot(fig)
+    st.plotly_chart(fig)
 
 # @st.cache
 def run():    
     # Parameter Sliders 
-    param_a = st.slider(label='',
-                  min_value=-50,
-                  max_value=50,
-                  value=0,
-                  step=1)
+    mean = st.slider(label='Adjust the mean (μ)',
+                  min_value=-1.0,
+                  max_value=1.0,
+                  value=0.0,
+                  step=0.1)
     
-    param_b = st.slider(label='',
-                  min_value=0,
-                  max_value=100,
-                  value=25,
-                  step=1)
+    std = st.slider(label='Adjust the standard deviation (σ)',
+                  min_value=0.01,
+                  max_value=1.0,
+                  value=0.5,
+                  step=0.01)
 
-    parameters = []
+    parameters = [mean, std]
     
     return parameters
     

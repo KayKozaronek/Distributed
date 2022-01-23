@@ -10,7 +10,7 @@ def plot(degrees):
 
     fig = px.area(x = xs, 
             y = chi2.pdf(xs, degrees),
-            title = 'Student-t Distribution',
+            title = 'Chi-Squared Distribution',
             labels = {
                 'x': 'Value of Random Variable',
                 'y': 'Probability'
