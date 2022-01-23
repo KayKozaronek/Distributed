@@ -4,8 +4,8 @@ CONTINUOUS_OPTIONS = ['Continuous Uniform',
                       'Gamma',
                       'Beta',
                       'Log-Normal',
-                      'Chi-Square',
-                      'Student-t']
+                      'Chi Squared',
+                      'Student T']
 
 DISCRETE_OPTIONS = ['Discrete Uniform',
                     'Binomial',
